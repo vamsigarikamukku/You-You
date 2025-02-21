@@ -141,6 +141,407 @@
                 input.style.border = "1px solid #ccc";
             });
         }
+
+        document.writeln(`1. General MERN Stack Questions
+1. What is the MERN stack?
+Answer:
+MERN stands for MongoDB, Express.js, React, and Node.js, a popular JavaScript-based technology stack used for developing full-stack web applications.
+
+2. Why use the MERN stack?
+Answer:
+
+Uses JavaScript for both frontend and backend
+MongoDB’s flexible schema suits modern applications
+Express.js simplifies backend development
+React provides fast UI rendering
+Node.js offers a scalable server-side runtime
+3. How does data flow in a MERN stack application?
+Answer:
+
+Frontend (React) → sends requests to
+Backend (Express + Node.js) → interacts with
+Database (MongoDB) → sends responses back through
+Backend → Frontend
+2. MongoDB Questions
+4. What is MongoDB?
+Answer:
+MongoDB is a NoSQL database that stores data in a flexible, JSON-like format.
+
+5. What are the advantages of MongoDB?
+Answer:
+
+Schema-less structure
+Scales horizontally
+Supports rich queries
+Stores data in BSON format
+6. How do you create and insert data in MongoDB?
+Answer:
+
+js
+Copy
+Edit
+db.users.insertOne({ name: "John", age: 30 });
+db.users.insertMany([{ name: "Alice" }, { name: "Bob" }]);
+7. What is the difference between find() and findOne() in MongoDB?
+Answer:
+
+find() returns all matching documents
+findOne() returns only the first matching document
+8. What is an aggregation pipeline in MongoDB?
+Answer:
+Aggregation is used to process data and generate computed results. Example:
+
+js
+Copy
+Edit
+db.orders.aggregate([
+  { $match: { status: "shipped" } },
+  { $group: { _id: "$customerId", total: { $sum: "$amount" } } }
+]);
+9. What is indexing in MongoDB?
+Answer:
+Indexing improves query performance by storing sorted references to documents.
+Example:
+
+js
+Copy
+Edit
+db.users.createIndex({ name: 1 }); // Ascending index on 'name'
+3. Express.js Questions
+10. What is Express.js?
+Answer:
+Express.js is a minimalist web framework for Node.js that simplifies routing and middleware handling.
+
+11. How do you create an Express server?
+Answer:
+
+js
+Copy
+Edit
+const express = require("express");
+const app = express();
+app.get("/", (req, res) => res.send("Hello World"));
+app.listen(3000, () => console.log("Server running on port 3000"));
+12. What is middleware in Express.js?
+Answer:
+Middleware functions process requests before reaching the final route handler.
+Example:
+
+js
+Copy
+Edit
+app.use((req, res, next) => {
+  console.log("Middleware executed");
+  next();
+});
+13. What are the types of middleware in Express?
+Answer:
+
+Built-in (e.g., express.json())
+Third-party (e.g., cors, morgan)
+Custom middleware
+14. How do you handle errors in Express?
+Answer:
+Using an error-handling middleware:
+
+js
+Copy
+Edit
+app.use((err, req, res, next) => {
+  res.status(500).json({ message: err.message });
+});
+15. What is the difference between req.params and req.query?
+Answer:
+
+req.params: Retrieves route parameters
+req.query: Retrieves query string parameters
+4. React Questions
+16. What is React?
+Answer:
+React is a JavaScript library for building fast and interactive user interfaces.
+
+17. What are React Hooks?
+Answer:
+Hooks let you use state and lifecycle methods in functional components.
+Example:
+
+const [count, setCount] = useState(0);
+18. What is the difference between state and props in React?
+Answer:
+
+State: Internal to the component, can be changed
+Props: Passed from parent to child, cannot be changed
+19. How do you handle forms in React?
+Answer:
+Using controlled components:
+
+const [input, setInput] = useState("");
+<input value={input} onChange={(e) => setInput(e.target.value)} />;
+20. What is Redux, and why use it?
+Answer:
+Redux is a state management tool for managing global state in React applications.
+
+21. What is React Router?
+Answer:
+React Router handles client-side navigation. Example:
+
+<Route path="/about" element={<About />} />
+5. Node.js Questions
+22. What is Node.js?
+Answer:
+Node.js is a JavaScript runtime that allows running JavaScript outside the browser.
+
+23. What is the event loop in Node.js?
+Answer:
+The event loop allows Node.js to handle non-blocking I/O operations efficiently.
+
+24. How does Node.js handle asynchronous operations?
+Answer:
+Using callbacks, Promises, and async/await.
+
+25. What are streams in Node.js?
+Answer:
+Streams handle data chunk-by-chunk for efficient processing.
+
+6. Full-Stack Integration Questions
+26. How do you connect React frontend to a Node.js backend?
+Answer:
+By making API calls using fetch or axios:
+
+js
+Copy
+Edit
+axios.get("http://localhost:5000/api/data").then(res => console.log(res.data));
+27. How do you set up CORS in Express.js?
+Answer:
+
+js
+Copy
+Edit
+const cors = require("cors");
+app.use(cors());
+28. How do you handle authentication in a MERN app?
+Answer:
+Using JWT (JSON Web Tokens):
+
+js
+Copy
+Edit
+const token = jwt.sign({ id: user._id }, "secret_key", { expiresIn: "1h" });
+29. How do you deploy a MERN app?
+Answer:
+
+Frontend: Vercel, Netlify
+Backend: Heroku, Render
+Database: MongoDB Atlas
+30. How do you use environment variables in a MERN app?
+Answer:
+Using .env file:
+
+plaintext
+Copy
+Edit
+MONGO_URI=your_mongodb_url
+7. Advanced MERN Stack Questions
+31. What is Server-Side Rendering (SSR) in React?
+Answer:
+SSR renders pages on the server before sending them to the client.
+
+32. How do you implement pagination in MongoDB?
+Answer:
+Using .skip() and .limit():
+
+js
+Copy
+Edit
+db.users.find().skip(10).limit(10);
+33. How do you implement WebSockets in a MERN app?
+Answer:
+Using Socket.io.
+
+34. What is the difference between MVC and MERN architecture?
+Answer:
+MERN follows a component-based structure, whereas MVC has separate models, views, and controllers.
+
+
+
+MERN Stack Interview Questions
+MongoDB
+What is MongoDB?
+
+MongoDB is a NoSQL database that stores data in flexible, JSON-like documents.
+How is MongoDB different from SQL databases?
+
+It is schema-less, uses collections instead of tables, and stores data in BSON format.
+What is a document in MongoDB?
+
+A document is a single record in a MongoDB collection, stored in a JSON-like format.
+How do you create a database in MongoDB?
+
+use databaseName
+What is indexing in MongoDB?
+
+Indexes improve query performance by allowing MongoDB to search efficiently.
+How do you insert a document in MongoDB?
+
+db.collection.insertOne({name: "John", age: 30})
+How do you update a document in MongoDB?
+
+db.collection.updateOne({name: "John"}, {$set: {age: 31}})
+How do you delete a document in MongoDB?
+
+db.collection.deleteOne({name: "John"})
+What is aggregation in MongoDB?
+
+Aggregation is used to process data and return computed results (like SQL GROUP BY).
+How do you find all documents in a collection?
+
+db.collection.find({})
+Express.js
+What is Express.js?
+
+Express.js is a fast and minimal Node.js framework used for building web applications and APIs.
+How do you create a basic Express server?
+
+const express = require("express");
+const app = express();
+app.listen(3000, () => console.log("Server running on port 3000")); 
+What is middleware in Express?
+
+Middleware functions execute during the request-response cycle and can modify the request or response.
+How do you handle routes in Express.js?
+
+app.get("/home", (req, res) => {
+    res.send("Welcome to Home Page");
+});
+How do you handle errors in Express.js?
+
+app.use((err, req, res, next) => {
+    res.status(500).send({ message: err.message });
+});
+How do you parse JSON in Express?
+
+app.use(express.json());
+What is CORS in Express.js?
+
+CORS (Cross-Origin Resource Sharing) allows access to resources from different domains.
+How do you use CORS in Express?
+
+const cors = require("cors");
+app.use(cors());
+How do you send a response in Express.js?
+
+res.send("Hello World")
+How do you serve static files in Express.js?
+
+app.use(express.static("public"));
+React.js
+What is React.js?
+
+React.js is a JavaScript library for building UI components.
+What are props in React?
+
+Props are read-only arguments passed to components.
+What is state in React?
+
+State is a mutable object that controls component behavior.
+How do you create a functional component in React?
+
+const Greeting = () => <h1>Hello, World!</h1>;
+How do you manage state in a functional component?
+
+import { useState } from "react";
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+};
+What is JSX?
+
+JSX is a syntax extension for JavaScript that looks like HTML.
+What is a React Hook?
+
+Hooks let functional components use state and other React features.
+What is useEffect used for?
+
+useEffect(() => {
+  console.log("Component mounted");
+}, []);
+It handles side effects in function components.
+How do you pass data between components?
+
+Using props.
+What is React Router?
+
+A library for handling client-side routing in React.
+Node.js
+What is Node.js?
+
+Node.js is a JavaScript runtime that allows running JS outside the browser.
+What is the difference between CommonJS and ES6 modules?
+
+CommonJS uses require(), ES6 uses import.
+How do you create a server in Node.js?
+
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.end("Hello, Node.js");
+});
+server.listen(3000);
+What is npm?
+
+npm (Node Package Manager) is used to install and manage Node packages.
+What is the event loop in Node.js?
+
+The event loop handles asynchronous operations in Node.js.
+What is a callback function in Node.js?
+
+A function passed to another function to execute later.
+What is an API?
+
+API (Application Programming Interface) allows communication between different software.
+How do you read a file in Node.js?
+
+const fs = require("fs");
+fs.readFile("file.txt", "utf8", (err, data) => console.log(data));
+What is the difference between synchronous and asynchronous programming?
+
+Synchronous blocks execution, while asynchronous runs in the background.
+What is the purpose of package.json?
+
+It holds project metadata and dependencies.
+HTML & CSS Questions
+What is semantic HTML?
+
+Using elements like <article>, <section>, <header> to improve readability.
+What is the difference between id and class?
+
+id is unique, class can be used multiple times.
+What is the difference between absolute and relative positioning in CSS?
+
+absolute positions relative to the nearest positioned ancestor, relative shifts from its normal position.
+What is the difference between flexbox and grid?
+
+Flexbox is for 1D layouts, Grid is for 2D layouts.
+What is the difference between em, rem, px?
+
+px is fixed, em is relative to the parent, rem is relative to the root.
+What is z-index in CSS?
+
+It controls the stack order of elements.
+What is the difference between visibility: hidden and display: none?
+
+visibility: hidden hides the element but keeps its space, display: none removes it from the layout.
+How do you make a website responsive?
+
+Using media queries, flexible layouts, and relative units.
+What is the difference between inline, block, and inline-block elements?
+
+inline takes only required space, block takes full width, inline-block allows setting width and height.
+What is pseudo-class in CSS?
+
+A keyword added to a selector (e.g., :hover, :nth-child(2)).
+`) 
     </script>
+
 </body>
 </html>
